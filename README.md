@@ -117,4 +117,3 @@ See the [LICENSE](LICENSE) file for details.
 ---
 
 Feel free to fork, experiment, and expand this basic GAN implementation!
-```
