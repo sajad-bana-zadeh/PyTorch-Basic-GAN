@@ -28,7 +28,7 @@ During training, the generator improves at creating realistic images to fool the
 
 1. Clone the repository:
    ```
-   git clone https://github.com/your_username/PyTorch-Basic-GAN.git
+   git clone https://github.com/sajad-bana-zadeh/PyTorch-Basic-GAN.git
    cd PyTorch-Basic-GAN
    ```
 
