@@ -152,16 +152,5 @@ fake_images = fake_images.view(-1, 1, 28, 28).cpu().detach()
 | Training            | Train D then G per batch            |
 | Evaluation          | Generate fake images with G         |
 
-**This is the foundational workflow for implementing GANs in PyTorch, easily customizable for more advanced GAN variants or other datasets**[1][2][3][4][5].
+**This is the foundational workflow for implementing GANs in PyTorch, easily customizable for more advanced GAN variants or other datasets**.
 
-[1] https://www.baeldung.com/cs/pytorch-generative-adversarial-networks
-[2] https://www.geeksforgeeks.org/deep-learning/generative-adversarial-networks-gans-in-pytorch/
-[3] https://pytorch.org/tutorials/beginner/dcgan_faces_tutorial.html
-[4] https://github.com/rehanfazalkhan/GAN-implementation-from-scratch-using-PyTorch
-[5] https://dev.to/aionlinecourse/a-step-by-step-guide-to-implementing-a-gan-with-pytorch-ij6
-[6] https://www.kaggle.com/code/songseungwon/pytorch-gan-basic-tutorial-for-beginner
-[7] https://www.youtube.com/watch?v=_pIMdDWK5sc
-[8] https://lightning.ai/docs/pytorch/stable/notebooks/lightning_examples/basic-gan.html
-[9] https://itwinai.readthedocs.io/latest/tutorials/distrib-ml/torch-tutorial-GAN.html
-[10] https://pub.towardsai.net/build-your-own-generative-adversarial-network-gan-using-pytorch-c367b8506987
-[11] https://github.com/eriklindernoren/PyTorch-GAN
