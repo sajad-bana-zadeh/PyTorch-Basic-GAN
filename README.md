@@ -1,10 +1,6 @@
 # PyTorch-Basic-GAN
 Basic implementation of a Generative Adversarial Network (GAN) in PyTorch. Trains a generator and discriminator on the MNIST dataset to generate realistic handwritten digit images. Includes model definition, training loop, and image generation visualization. Beginner-friendly tutorial.
 
-# PyTorch-Basic-GAN
-
-Basic implementation of a Generative Adversarial Network (GAN) in PyTorch. This project trains a simple GAN on the MNIST dataset to generate realistic handwritten digit images.
-
 ---
 
 ## Overview
@@ -107,7 +103,9 @@ Sample generated images will be saved during training to visualize GAN progress.
 
 ## License
 
-This project is licensed under the MIT License.
+
+This project is licensed under the GNU GENERAL PUBLIC LICENSE Version 3 (GPL-3.0).
+See the [LICENSE](LICENSE) file for details.
 
 ---
 
@@ -120,15 +118,3 @@ This project is licensed under the MIT License.
 
 Feel free to fork, experiment, and expand this basic GAN implementation!
 ```
-
-This README guides users through understanding the GAN, setting up the environment, running the code, and what to expect during training. You can adjust paths or filenames as needed.
-
-[1] https://itwinai.readthedocs.io/latest/tutorials/distrib-ml/torch-tutorial-GAN.html
-[2] https://huggingface.co/facebook/ic_gan/blob/main/stylegan2_ada_pytorch/README.md
-[3] https://github.com/eriklindernoren/PyTorch-GAN
-[4] https://docs.pytorch.org/tutorials/beginner/dcgan_faces_tutorial.html
-[5] https://codeocean.com/capsule/1480388/tree/v1
-[6] https://git01lab.cs.univie.ac.at/est-gan/pix2pixhd/-/blob/master/README.md
-[7] https://replicate.com/rosinality/style-based-gan-pytorch
-[8] https://adioshun.gitbooks.io/deep_learning/GAN/
-[9] https://sourceforge.net/projects/simple-stylegan2-pyt.mirror/
