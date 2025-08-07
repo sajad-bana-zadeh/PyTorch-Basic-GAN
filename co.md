@@ -137,9 +137,19 @@ After training, generate images to see your GAN's output:
 ```python
 generator.eval()
 noise = torch.randn(16, noise_dim, device=device)
+
 fake_images = generator(noise)
 fake_images = fake_images.view(-1, 1, 28, 28).cpu().detach()
-# Plot using matplotlib ...
+fake_images = (fake_images + 1) / 2
+
+# Plot using matplotlib 
+fig, axes = plt.subplots(4, 4, figsize=(6, 6))
+for i in range(16):
+    ax = axes[i // 4, i % 4]
+    ax.imshow(fake_images[i][0], cmap='gray')
+    ax.axis('off')
+plt.tight_layout()
+plt.show()
 ```
 
 ### Summary Table

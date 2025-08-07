@@ -1,119 +1,99 @@
-# PyTorch-Basic-GAN
-Basic implementation of a Generative Adversarial Network (GAN) in PyTorch. Trains a generator and discriminator on the MNIST dataset to generate realistic handwritten digit images. Includes model definition, training loop, and image generation visualization. Beginner-friendly tutorial.
+# PyTorch Basic GAN
 
----
+This project is a basic implementation of a Generative Adversarial Network (GAN) using PyTorch. It trains a Generator and a Discriminator on the MNIST dataset to generate realistic handwritten digit images. This implementation is beginner-friendly and focuses on the core concepts of GANs using fully connected (dense) networks.
 
 ## Overview
 
-A GAN consists of two neural networks playing an adversarial game:
+A GAN consists of two neural networks competing against each other:
 
-- **Generator (G):** Creates fake images from random noise.
-- **Discriminator (D):** Tries to distinguish real images (from the dataset) from fake images (produced by the generator).
+- **Generator (G):** Takes random noise as input and generates fake images resembling real data.
+- **Discriminator (D):** Attempts to distinguish between real images (from the MNIST dataset) and fake images (from the generator).
 
-During training, the generator improves at creating realistic images to fool the discriminator, while the discriminator improves at detecting fakes. The process continues until the generator produces convincing images.
+During training:
 
----
+- The discriminator learns to better classify real and fake images.
+- The generator learns to create images that can fool the discriminator.
+  
+The training continues until the generator produces realistic images indistinguishable from the real dataset.
 
 ## Project Structure
 
-- `generator.py` - Defines the Generator model.
-- `discriminator.py` - Defines the Discriminator model.
-- `train.py` - Contains the training loop, data loading, and loss calculations.
-- `utils.py` (optional) - Utility functions for visualization, saving samples, etc.
-- `requirements.txt` - Required Python dependencies.
-
----
+- `basic_gan.ipynb` — Jupyter notebook containing:
+  - Data preparation using MNIST normalized to $$[-1, 1]$$
+  - Definition of Generator and Discriminator as fully connected networks
+  - Training loop for 100 epochs with Adam optimizers and BCE loss
+  - Image generation and visualization
+  
+*(Note: The code is currently self-contained within the notebook.)*
 
 ## Installation
 
-1. Clone the repository:
-   ```
-   git clone https://github.com/sajad-bana-zadeh/PyTorch-Basic-GAN.git
-   cd PyTorch-Basic-GAN
-   ```
+To run this notebook, you need Python installed along with PyTorch, torchvision, and matplotlib.
 
-2. Create and activate a virtual environment (optional but recommended):
-   ```
-   python3 -m venv venv
-   source venv/bin/activate  # Linux/macOS
-   venv\Scripts\activate     # Windows
-   ```
+You can install the required packages via pip:
 
-3. Install dependencies:
-   ```
-   pip install torch torchvision matplotlib
-   ```
-
----
+```bash
+pip install torch torchvision matplotlib
+```
 
 ## Usage
 
-Run the training script:
-```
-python train.py
-```
+Run the notebook `basic_gan.ipynb`. It will:
 
-This will:
-
-- Download and normalize the MNIST dataset.
-- Initialize the generator and discriminator models.
-- Train the GAN for 25 epochs.
-- Print loss values periodically.
-- Save generated images every few epochs for visualization.
-
+- Download and preprocess the MNIST dataset
+- Initialize and train Generator and Discriminator for 100 epochs with a batch size of 64
+- Use Binary Cross Entropy loss and Adam optimizers (lr=0.0002, betas=(0.5, 0.999))
+- Print discriminator and generator losses every 100 steps during training
+- Generate and display a grid of 16 images produced by the trained generator
+  
 ---
 
 ## Key Implementation Details
 
 ### 1. Dataset Preparation
 
-- MNIST handwritten digits dataset is normalized to \([-1, 1]\) range.
-- DataLoader splits dataset into batches for efficient training.
+- MNIST handwritten digit dataset is normalized to $$[-1, 1]$$ to stabilize GAN training
+- DataLoader with batch size 64 shuffles training data for each epoch
 
 ### 2. Generator Network
 
-- Takes a random noise vector of size 100 as input.
-- Uses fully connected layers with ReLU activations.
-- Outputs a 28x28 image with pixel values between -1 and 1 (Tanh activation).
+- Input: noise vector of dimension 100
+- Structure: two fully connected layers
+  - Linear(100 → 128) + ReLU
+  - Linear(128 → 784) + Tanh
+- Output: 28 × 28 grayscale image with pixel values between -1 and 1
 
 ### 3. Discriminator Network
 
-- Takes a 28x28 image as input.
-- Uses fully connected layers with LeakyReLU activations.
-- Outputs a probability (0 to 1) indicating real or fake.
+- Input: 28 × 28 image, flattened to 784 features
+- Structure: two fully connected layers
+  - Linear(784 → 128) + LeakyReLU(0.2)
+  - Linear(128 → 1) + Sigmoid
+- Output: probability (0 to 1) of image being real
 
 ### 4. Loss and Optimization
 
-- Binary Cross Entropy loss is used for both generator and discriminator.
-- Adam optimizer with learning rate 0.0002 and betas (0.5, 0.999).
+- Loss: Binary Cross Entropy (BCELoss)
+- Optimizer: Adam with learning rate 0.0002 and betas (0.5, 0.999)
 
 ### 5. Training Loop
 
-- Discriminator is trained on both real images (label 1) and fake images (label 0).
-- Generator aims to fool discriminator, so its loss is calculated with target label 1 for fake images.
-- Losses are backpropagated to update network weights.
-
----
+- For each batch:
+  - Train discriminator on real images (label = 1) and fake images generated by the generator (label = 0)
+  - Train generator to produce images that fool the discriminator (label = 1 for fake images)
+- Losses are logged every 100 batches
 
 ## Results
 
-Sample generated images will be saved during training to visualize GAN progress. As training proceeds, generated digits should become more realistic.
-
----
+Generated images improve over epochs, producing digits increasingly similar to real handwritten digits from MNIST. Visualization of generated samples is shown after training.
 
 ## License
 
-
-This project is licensed under the GNU GENERAL PUBLIC LICENSE Version 3 (GPL-3.0).
-See the [LICENSE](LICENSE) file for details.
-
----
+This project is licensed under the GNU GENERAL PUBLIC LICENSE Version 3 (GPL-3.0). See the LICENSE file for details.
 
 ## Acknowledgements
 
-- Inspired by [PyTorch official tutorials](https://pytorch.org/tutorials/beginner/dcgan_faces_tutorial.html)
-- Thanks to the PyTorch and deep learning communities for extensive resources.
+- Inspired by PyTorch tutorials and foundational GAN research  
+- Thanks to the PyTorch community for invaluable resources
 
----
-
-Feel free to fork, experiment, and expand this basic GAN implementation!
+Feel free to use, modify, and extend this basic GAN implementation for your own projects or learning!
